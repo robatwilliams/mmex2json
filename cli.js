@@ -31,6 +31,7 @@ function parseAccount(lines) {
   const info = parseAccountInfo(infoLines);
   const { transactions } = qif2json.parse(recordsLines.join('\n'));
 
+  info.finalBalance = calculateFinalBalance(info.initialBalance, transactions);
   markTransferTransactions(transactions);
 
   return { info, transactions };
@@ -49,6 +50,16 @@ function parseAccountInfo(lines) {
     name: extractLine(lines, 'N'),
     type: extractLine(lines, 'T'),
   };
+}
+
+function calculateFinalBalance(initial, transactions) {
+  // Work with integers to (mostly) avoid floating point issues
+  const initialFractional = initial * 100;
+  const finalFractional = transactions.reduce((accumulator, tx) => accumulator + (tx.amount * 100), initialFractional);
+  const final = finalFractional / 100;
+
+  // Clear up any remaining floating-point issue
+  return Number(finalFractional.toFixed(2));
 }
 
 function markTransferTransactions(transactions) {
