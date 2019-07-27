@@ -31,6 +31,8 @@ function parseAccount(lines) {
   const info = parseAccountInfo(infoLines);
   const { transactions } = qif2json.parse(recordsLines.join('\n'));
 
+  markTransferTransactions(transactions);
+
   return { info, transactions };
 }
 
@@ -46,6 +48,13 @@ function parseAccountInfo(lines) {
     name: extract('N'),
     type: extract('T'),
   };
+}
+
+function markTransferTransactions(transactions) {
+  transactions
+    .filter(tx => !tx.division) // split transactions don't have a category
+    .filter(tx => tx.category.startsWith('[') && tx.category.endsWith(']'))
+    .forEach(tx => tx.isTransfer = true);
 }
 
 function arraySplit(array, separator, { matchMode, keepSeparator } = {}) {
