@@ -11,6 +11,9 @@
   },
   "license": "MIT",
   "author": "Robat Williams",
+  "files": [
+    "cli.js"
+  ],
   "bin": {
     "mmex2json": "./cli.js"
   },
