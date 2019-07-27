@@ -32,4 +32,6 @@ mmex2json <qif-file> > <output-file>
 
 Note that unselected accounts are included in the export if there are transfers between them and an account that is selected. Only the transactions for those transfers are included.
 
+QIF is the only export format available that supports split transactions (across multiple categories).
+
 Tested with Money Manager EX version 1.3.3.
