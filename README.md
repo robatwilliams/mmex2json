@@ -1,6 +1,8 @@
 # mmex2json
 > Converts [QIF](https://en.wikipedia.org/wiki/Quicken_Interchange_Format) data exported from [Money Manager EX](https://github.com/moneymanagerex/moneymanagerex) to JSON format.
 
+A thin wrapper around [qif2json](https://github.com/spmason/qif2json) to handle multiple accounts, account metadata, and some MMEX-specific attributes.
+
 
 ## Usage
 This is a command line utility. It reads from a specified file, and outputs to standard output - which you can pipe to a file.
@@ -31,7 +33,3 @@ mmex2json <qif-file> > <output-file>
 Note that unselected accounts are included in the export if there are transfers between them and an account that is selected. Only the transactions for those transfers are included.
 
 Tested with Money Manager EX version 1.3.3.
-
-
-## Credit
-This utility is a small wrapper around the [qif2json](https://github.com/spmason/qif2json) library by Steve Mason, which does almost all the hard work.
