@@ -31,3 +31,7 @@ mmex2json <qif-file> > <output-file>
 Note that unselected accounts are included in the export if there are transfers between them and an account that is selected. Only the transactions for those transfers are included.
 
 Tested with Money Manager EX version 1.3.3.
+
+
+## Credit
+This utility is a small wrapper around the [qif2json](https://github.com/spmason/qif2json) library by Steve Mason, which does almost all the hard work.
