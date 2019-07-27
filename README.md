@@ -35,3 +35,24 @@ Note that unselected accounts are included in the export if there are transfers 
 QIF is the only export format available that supports split transactions (across multiple categories).
 
 Tested with Money Manager EX version 1.3.3.
+
+
+## Output format
+The root is an array of accounts, each of which has information and transactions:
+
+```json
+[
+  {
+    "info": {
+      "currency": "GBP",
+      "initialBalance": 0,
+      "name": "ACME Current Account",
+      "type": "Bank",
+      "finalBalance": 100
+    },
+    "transactions": []
+  }
+]
+```
+
+Transaction attributes are as per qif2json, with the addition of `isTransfer` to denote transfers. This includes all transaction attributes from MMEX, including split transactions.
