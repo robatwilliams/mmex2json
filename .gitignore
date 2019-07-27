@@ -1,1 +1,5 @@
 /node_modules
+
+# Working data files; don't accidentally commit or publish
+*.json
+*.qif
