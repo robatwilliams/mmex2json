@@ -1,0 +1,12 @@
+{
+  "name": "mmex2json",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "bin": {
+    "mmex2json": "./cli.js"
+  },
+  "dependencies": {
+    "qif2json": "^0.4.0"
+  }
+}
