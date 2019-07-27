@@ -1,8 +1,16 @@
 {
   "name": "mmex2json",
   "version": "1.0.0",
-  "private": true,
+  "description": "Converts QIF data exported from Money Manager EX to JSON format",
+  "bugs": {
+    "url": "https://github.com/robatwilliams/mmex2json/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robatwilliams/mmex2json.git"
+  },
   "license": "MIT",
+  "author": "Robat Williams",
   "bin": {
     "mmex2json": "./cli.js"
   },
