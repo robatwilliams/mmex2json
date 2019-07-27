@@ -2,7 +2,7 @@
   "name": "mmex2json",
   "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bin": {
     "mmex2json": "./cli.js"
   },
