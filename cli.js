@@ -8,6 +8,12 @@ const readFile = util.promisify(fs.readFile);
 
 (async () => {
   const filename = process.argv.slice(2)[0];
+
+  if (!filename) {
+    console.log('Usage: mmex2json <qif-file>');
+    return;
+  }
+
   const fileData = await readFile(filename);
   const lines = fileData.toString('utf8').split('\r\n');  // TODO handle LF
 
