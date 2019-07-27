@@ -37,16 +37,17 @@ function parseAccount(lines) {
 }
 
 function parseAccountInfo(lines) {
-  const extract = lineCode => lines.find(line => line[0] === lineCode).slice(1);
-
   // Currency appears in the description field (e.g. [GBP]), actual description is not exported (as of 1.3.3)
-  const description = extract('D');
+  const description = extractLine(lines, 'D');
   const currency = description.substring(1, description.length - 1);
+
+  const initialBalance = Number(extractLine(lines, '$')) || 0;
 
   return {
     currency,
-    name: extract('N'),
-    type: extract('T'),
+    initialBalance,
+    name: extractLine(lines, 'N'),
+    type: extractLine(lines, 'T'),
   };
 }
 
@@ -55,6 +56,11 @@ function markTransferTransactions(transactions) {
     .filter(tx => !tx.division) // split transactions don't have a category
     .filter(tx => tx.category.startsWith('[') && tx.category.endsWith(']'))
     .forEach(tx => tx.isTransfer = true);
+}
+
+function extractLine(lines, lineCode) {
+  const line = lines.find(line => line[0] === lineCode);
+  return line && line.slice(1);
 }
 
 function arraySplit(array, separator, { matchMode, keepSeparator } = {}) {
