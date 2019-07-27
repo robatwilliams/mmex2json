@@ -20,3 +20,14 @@ npm install -g mmex2json
 
 mmex2json <qif-file> > <output-file>
 ```
+
+
+## Exporting a QIF file from Money Manager EX
+1. File > Export > QIF Files
+1. Categories - leave unticked
+1. Accounts - choose one or many
+1. Date Format - leave as DD/MM/YY
+
+Note that unselected accounts are included in the export if there are transfers between them and an account that is selected. Only the transactions for those transfers are included.
+
+Tested with Money Manager EX version 1.3.3.
